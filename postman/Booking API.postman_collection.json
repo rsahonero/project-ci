@@ -1,0 +1,369 @@
+{
+  "info": {
+    "_postman_id": "a01e1760-02b6-4f9f-aae2-d2a1f62b803e",
+    "name": "Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "166449",
+    "_collection_link": "https://go.postman.co/collection/166449-a01e1760-02b6-4f9f-aae2-d2a1f62b803e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Token Client",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseBody = pm.response.json();\r",
+                  "pm.collectionVariables.set(\"token_client\", responseBody.access_token)\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"{{client_email}}\",\r\n  \"password\": \"{{client_password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/v1/clients/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "v1",
+                "clients",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseBody = pm.response.json();\r",
+                  "pm.collectionVariables.set(\"token\", responseBody.access_token)"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"username\": \"admin\",\r\n\"password\": \"S3cret@123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/auth/token",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "auth",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "clients",
+      "item": [
+        {
+          "name": "Clients - By Id",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_client}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/clients/{{clientID}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "clients",
+                "{{clientID}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clients - Get all",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status code is 200', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Response has JSON body', function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test('Response body has items array', function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('items').that.is.an('array');",
+                  "});",
+                  "",
+                  "pm.test('Response body has pagination fields', function () {",
+                  "    const json = pm.response.json();",
+                  "    pm.expect(json).to.have.property('total');",
+                  "    pm.expect(json).to.have.property('page');",
+                  "    pm.expect(json).to.have.property('page_size');",
+                  "    pm.expect(json).to.have.property('total_pages');",
+                  "});",
+                  "",
+                  "pm.test('Each item has required fields', function () {",
+                  "    const json = pm.response.json();",
+                  "    json.items.forEach(function(item) {",
+                  "        pm.expect(item).to.have.property('id');",
+                  "        pm.expect(item).to.have.property('name');",
+                  "        pm.expect(item).to.have.property('email');",
+                  "        pm.expect(item).to.have.property('phone');",
+                  "        pm.expect(item).to.have.property('document_id');",
+                  "        pm.expect(item).to.have.property('address');",
+                  "        pm.expect(item).to.have.property('is_active');",
+                  "        pm.expect(item).to.have.property('created_at');",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test('Response time is less than 500ms', function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(500);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clients - Create",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "const timestamp = Date.now();\r",
+                  "pm.collectionVariables.set(\"currentTimeStamp\", timestamp);\r",
+                  "console.log(\" this value is: \" + pm.collectionVariables.get(\"currentTimeStamp\"));\r",
+                  "\r",
+                  "\r",
+                  "const email_generated = `rosi${Math.floor(Math.random()*100000)}@example.com`;\r",
+                  "const document_generated = Math.floor(60000000 + Math.random()*999999999).toString();\r",
+                  "pm.environment.set(\"email\", email_generated);\r",
+                  "pm.environment.set(\"document\", document_generated);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"phone\": \"584 1286544256\",\r\n  \"document_id\": \"{{document}}\",\r\n  \"address\": \"477 av Vicencio\",\r\n  \"is_active\": true,\r\n  \"password\": \"Password2736!0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clients - Update",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token_client}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Roberto Sandoval\",\r\n    \"email\": \"rosi65868@example.com\",\r\n    \"phone\": \"584 1286544256\",\r\n    \"document_id\": \"589 - 874555\",\r\n    \"address\": \"477 av Vicencio #26\",\r\n    \"is_active\": true,\r\n    \"password\": \"Password2736!0\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/v1/clients/15",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "clients",
+                "15"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Clients - Delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/clients/10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "clients",
+                "10"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "token_client",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNSIsImVtYWlsIjoicm9zaTY1ODY4QGV4YW1wbGUuY29tIiwiZXhwIjoxNzkwMjY0NzczLCJ0eXBlIjoiY2xpZW50In0.bXQ_ir2Cmd5zpK_t61Psi4N804IEixhAs6VQHjwTo6Y"
+    },
+    {
+      "key": "token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImV4cCI6MTc5MDI2NDc3NiwidHlwZSI6InVzZXIifQ.CMIZZvl8MV4PfMLRIOukttVlydzqjzMknZK3ijQckGk"
+    },
+    {
+      "key": "currentTimeStamp",
+      "value": 1790261167974
+    }
+  ]
+}
