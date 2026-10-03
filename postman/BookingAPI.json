@@ -1,10 +1,9 @@
 {
   "info": {
-    "_postman_id": "a01e1760-02b6-4f9f-aae2-d2a1f62b803e",
+    "_postman_id": "839b8da3-f21e-4f54-8206-f19bfd852b6a",
     "name": "Booking API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "166449",
-    "_collection_link": "https://go.postman.co/collection/166449-a01e1760-02b6-4f9f-aae2-d2a1f62b803e?source=collection_link"
+    "_exporter_id": "166449"
   },
   "item": [
     {
@@ -266,7 +265,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{token_client}}",
+                  "value": "{{token}}",
                   "type": "string"
                 }
               ]
@@ -275,7 +274,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Roberto Sandoval\",\r\n    \"email\": \"rosi65868@example.com\",\r\n    \"phone\": \"584 1286544256\",\r\n    \"document_id\": \"589 - 874555\",\r\n    \"address\": \"477 av Vicencio #26\",\r\n    \"is_active\": true,\r\n    \"password\": \"Password2736!0\"\r\n}",
+              "raw": "{\r\n    \"name\": \"Roberto Sandoval\",\r\n    \"email\": \"rosi65868@example.com\",\r\n    \"phone\": \"584 45582379\",\r\n    \"document_id\": \"589 - 874555\",\r\n    \"address\": \"477 av Vicencio #26\",\r\n    \"is_active\": true,\r\n    \"password\": \"Password2736!0\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -312,14 +311,14 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/v1/clients/10",
+              "raw": "{{baseUrl}}/v1/clients/13",
               "host": [
                 "{{baseUrl}}"
               ],
               "path": [
                 "v1",
                 "clients",
-                "10"
+                "13"
               ]
             }
           },
