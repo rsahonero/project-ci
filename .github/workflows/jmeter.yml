@@ -24,7 +24,7 @@ jobs:
           mkdir -p reports
           
           ./apache-jmeter-5.5/bin/jmeter -n \
-          -t jmeter/jmeterProject.jmx \
+          -t jmeter/JmeterProject.jmx \
           -l reports/results.jtl \
           -e -o reports/dashboard
 
