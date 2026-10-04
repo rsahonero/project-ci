@@ -16,7 +16,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "let responseBody = pm.response.json();",
+                  "responseBody = pm.response.json();",
                   "pm.collectionVariables.set('token_client', responseBody.access_token);"
                 ],
                 "type": "text/javascript",
@@ -117,7 +117,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/{{clientID}}",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/15",
               "host": [
                 "crib-imitate-risotto.ngrok-free.dev"
               ],
