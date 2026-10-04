@@ -21,7 +21,7 @@ jobs:
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Install Newman Report
+      - name: Install Newman 
         run: npm install -g newman-reporter-htmlextra
 
       - name: Run Postman Collection
@@ -31,7 +31,7 @@ jobs:
           -r cli,htmlextra \
           --reporter-htmlextra-export report.html
 
-      - name: Upload Test Report
+      - name: Upload Report
         uses: actions/upload-artifact@v7
         with:
           name: postman-report
