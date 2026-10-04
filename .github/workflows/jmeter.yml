@@ -15,21 +15,54 @@ jobs:
 
       - name: Install JMeter
         run: |
-          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
-          tar -xzf apache-jmeter-5.6.3.tgz
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
           ls
           
       - name: Run JMeter Test
         run: |
           mkdir -p reports
           
-          ./apache-jmeter-5.6.3/bin/jmeter -n \
-          -t jmeter/jmeterProject.jmx \
+          ./apache-jmeter-5.5/bin/jmeter -n \
+          -t jmeter/JmeterProject.jmx \
+          -Jcsv.path=jmeter/data/suppliesCSV.csv \
           -l reports/results.jtl \
           -e -o reports/dashboard
 
+      - name: Fail if any JMeter sample failed
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import csv
+          import sys
+          from pathlib import Path
+
+          results = Path("reports/results.jtl")
+          if not results.is_file():
+              sys.exit("JMeter results file was not created.")
+
+          with results.open(newline="", encoding="utf-8") as result_file:
+              samples = csv.DictReader(result_file)
+              if not samples.fieldnames or "success" not in samples.fieldnames:
+                  sys.exit("JMeter results file has no success column.")
+              total = 0
+              failed = 0
+              for sample in samples:
+                  total += 1
+                  if sample["success"].lower() != "true":
+                      failed += 1
+
+          if total == 0:
+              sys.exit("JMeter results file contains no samples.")
+
+          print(f"JMeter samples: {total}; failed: {failed}")
+          if failed:
+              sys.exit(1)
+          PY
+
       - name: Upload Report
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: jmeter-report
-          path: reports/dashboard
+          path: reports
