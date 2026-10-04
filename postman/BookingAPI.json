@@ -39,10 +39,10 @@
               }
             },
             "url": {
-              "raw": "https://crib-imitate-risotto.ngrok-free.dev/v1/clients/login",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/login",
               "protocol": "https",
               "host": [
-                "https://crib-imitate-risotto.ngrok-free.dev"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "port": "443",
               "path": [
@@ -83,10 +83,10 @@
               }
             },
             "url": {
-              "raw": "https://crib-imitate-risotto.ngrok-free.dev/auth/token",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/auth/token",
               "protocol": "https",
               "host": [
-                "https://crib-imitate-risotto.ngrok-free.dev"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "port": "443",
               "path": [
