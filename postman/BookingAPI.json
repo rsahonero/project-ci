@@ -16,9 +16,8 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "const responseBody = pm.response.json();\r",
-                  "pm.collectionVariables.set(\"token_client\", responseBody.access_token)\r",
-                  ""
+                  "const responseBody = pm.response.json();",
+                  "pm.collectionVariables.set('token_client', responseBody.access_token);"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -61,8 +60,8 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "const responseBody = pm.response.json();\r",
-                  "pm.collectionVariables.set(\"token\", responseBody.access_token)"
+                  "const responseBody = pm.response.json();",
+                  "pm.collectionVariables.set('token', responseBody.access_token)"
                 ],
                 "type": "text/javascript",
                 "packages": {},
