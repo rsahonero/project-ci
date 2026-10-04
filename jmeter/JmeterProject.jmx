@@ -150,11 +150,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;Gorgeous Chips&quot;,&#xd;
-	&quot;quantity&quot;: 100,&#xd;
-	&quot;unit&quot;: &quot;50kg&quot;,&#xd;
-	&quot;price_per_unit&quot;: 10&#xd;
+                <stringProp name="Argument.value">{"name": "Gorgeous Chips", "quantity": 100, "unit": "50kg", "price_per_unit": 10
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -172,11 +168,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-	&quot;name&quot;: &quot;${name}&quot;,&#xd;
-	&quot;quantity&quot;: ${quantity},&#xd;
-	&quot;unit&quot;: &quot;${unit}&quot;,&#xd;
-	&quot;price_per_unit&quot;: ${price_per_unit}&#xd;
+                <stringProp name="Argument.value">{"name": "${name}", "quantity": ${quantity}, "unit": "${unit}", "price_per_unit": ${price_per_unit}
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
