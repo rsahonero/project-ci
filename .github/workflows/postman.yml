@@ -22,14 +22,14 @@ jobs:
         run: npm install -g newman
 
       - name: Install Newman 
-        run: npm install -g newman-reporter-htmlextra
+        run: npm install newman-reporter-html
 
       - name: Run Postman Collection
         run: 
           newman run postman/BookingAPI.json  \
           -e postman/dev.postman_environment.json \
-          -r cli,htmlextra \
-          --reporter-htmlextra-export report.html
+          -r cli,html \
+          --reporter-html-export report.html
 
       - name: Upload Report
         uses: actions/upload-artifact@v7
