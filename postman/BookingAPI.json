@@ -16,7 +16,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "const responseBody = pm.response.json();",
+                  "let responseBody = pm.response.json();",
                   "pm.collectionVariables.set('token_client', responseBody.access_token);"
                 ],
                 "type": "text/javascript",
@@ -30,7 +30,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"email\": \"{{client_email}}\",\r\n  \"password\": \"{{client_password}}\"\r\n}",
+              "raw": "{ \"email\": \"{{client_email}}\",  \"password\": \"{{client_password}}\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -60,7 +60,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "const responseBody = pm.response.json();",
+                  "let responseBody = pm.response.json();",
                   "pm.collectionVariables.set('token', responseBody.access_token)"
                 ],
                 "type": "text/javascript",
@@ -74,7 +74,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n\"username\": \"admin\",\r\n\"password\": \"S3cret@123\"\r\n}",
+              "raw": "{\"username\": \"admin\",\"password\": \"S3cret@123\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -117,9 +117,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/v1/clients/{{clientID}}",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/{{clientID}}",
               "host": [
-                "{{baseUrl}}"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "path": [
                 "v1",
@@ -196,9 +196,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/v1/clients",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients",
               "host": [
-                "{{baseUrl}}"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "path": [
                 "v1",
@@ -236,7 +236,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"phone\": \"584 1286544256\",\r\n  \"document_id\": \"{{document}}\",\r\n  \"address\": \"477 av Vicencio\",\r\n  \"is_active\": true,\r\n  \"password\": \"Password2736!0\"\r\n}",
+              "raw": "{\"name\": \"{{$randomFullName}}\",\"email\": \"{{email}}\",\"phone\": \"584 1286544256\",\"document_id\": \"{{document}}\",\"address\": \"477 av Vicencio\",\"is_active\": true,\"password\": \"Password2736!0\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -244,9 +244,9 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/v1/clients",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients",
               "host": [
-                "{{baseUrl}}"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "path": [
                 "v1",
@@ -273,7 +273,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Roberto Sandoval\",\r\n    \"email\": \"rosi65868@example.com\",\r\n    \"phone\": \"584 45582379\",\r\n    \"document_id\": \"589 - 874555\",\r\n    \"address\": \"477 av Vicencio #26\",\r\n    \"is_active\": true,\r\n    \"password\": \"Password2736!0\"\r\n}",
+              "raw": "{  \"name\": \"Roberto Sandoval\",\r\n    \"email\": \"rosi65868@example.com\",\r\n    \"phone\": \"584 45582379\",\r\n    \"document_id\": \"589 - 874555\",\r\n    \"address\": \"477 av Vicencio #26\",\r\n    \"is_active\": true,\r\n    \"password\": \"Password2736!0\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -281,9 +281,9 @@
               }
             },
             "url": {
-              "raw": "{{baseUrl}}/v1/clients/15",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/15",
               "host": [
-                "{{baseUrl}}"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "path": [
                 "v1",
@@ -310,9 +310,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/v1/clients/13",
+              "raw": "crib-imitate-risotto.ngrok-free.dev/v1/clients/13",
               "host": [
-                "{{baseUrl}}"
+                "crib-imitate-risotto.ngrok-free.dev"
               ],
               "path": [
                 "v1",
