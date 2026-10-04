@@ -150,7 +150,7 @@
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{"name": "Gorgeous Chips", "quantity": 100, "unit": "50kg", "price_per_unit": 10
+                <stringProp name="Argument.value">{"name": "Gorgeous Chips new", "quantity": 1500, "unit": "500kg", "price_per_unit": 20
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
