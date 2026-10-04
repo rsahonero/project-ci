@@ -15,15 +15,15 @@ jobs:
 
       - name: Install JMeter
         run: |
-          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
-          tar -xzf apache-jmeter-5.6.3.tgz
+          wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.5.tgz
+          tar -xzf apache-jmeter-5.5.tgz
           ls
           
       - name: Run JMeter Test
         run: |
           mkdir -p reports
           
-          ./apache-jmeter-5.6.3/bin/jmeter -n \
+          ./apache-jmeter-5.5/bin/jmeter -n \
           -t jmeter/jmeterProject.jmx \
           -l reports/results.jtl \
           -e -o reports/dashboard
