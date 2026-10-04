@@ -30,7 +30,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{ \"email\": \"{{client_email}}\",  \"password\": \"{{client_password}}\"}",
+              "raw": "{ \"email\": \"rosi65868@example.com\",  \"password\": \"Password2736!0\"}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -60,7 +60,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "let responseBody = pm.response.json();",
+                  "responseBody = pm.response.json();",
                   "pm.collectionVariables.set('token', responseBody.access_token)"
                 ],
                 "type": "text/javascript",
