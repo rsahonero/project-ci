@@ -13,7 +13,7 @@
         <collectionProp name="HeaderManager.headers">
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Authorization</stringProp>
-            <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImV4cCI6MTc5MTE0NTc3OCwidHlwZSI6InVzZXIifQ.8sW8CM8WWRF8AX7wChE8OoEHuycMd52VIvwe53N5A9U</stringProp>
+            <stringProp name="Header.value">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSIsImV4cCI6MTc5MTE1MzMzNSwidHlwZSI6InVzZXIifQ.Op3Kb2IM_Y-D3znygAnu2Duudn63bTSIbhoD0-PkvKg</stringProp>
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">content-type</stringProp>
@@ -251,7 +251,7 @@
         </ResultCollector>
         <hashTree/>
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Supplies">
-          <stringProp name="filename">jmeter/data/suppliesCSV.csv</stringProp>
+          <stringProp name="filename">data/suppliesCSV.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">name,quantity,unit,price_per_unit</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
