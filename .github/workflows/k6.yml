@@ -32,7 +32,7 @@ jobs:
           k6 run --summary-export=reports/report.html k6/scripts/providers-get.js
 
       - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: k6-html-report
           path: reports/report.html
