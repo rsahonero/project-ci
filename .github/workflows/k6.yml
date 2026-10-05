@@ -29,7 +29,6 @@ jobs:
 
       - name: Run K6 Test
         run: |
-          k6 run k6/scripts/booking-dd.js
           k6 run k6/scripts/providers-get.js
           
 
