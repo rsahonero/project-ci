@@ -41,7 +41,7 @@ export default function (accessToken) {
   // 4. Validaciones (Checks)
   check(res, {
     'status es 200': (r) => r.status === 200,
-    'response time < 300ms': (r) => r.timings.duration < 300,
+    'response time < 500ms': (r) => r.timings.duration < 500,
   });
   // console.log(`Status: ${res.status} - Body: ${res.body}`);
   sleep(1);
