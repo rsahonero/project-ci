@@ -29,7 +29,7 @@ jobs:
 
       - name: Run K6 Test
         run: |
-          k6 run k6/scripts/providers-get.js
+          k6 run --summary-export=reports/report.html k6/scripts/providers-get.js
 
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
